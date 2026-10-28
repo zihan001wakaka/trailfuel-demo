@@ -129,7 +129,7 @@ window.addEventListener('popstate',render);window.addEventListener('hashchange',
  return el.matches('p.small-note,div.notice,div.pending');
  });
  if(!notes.length)return;
- const section=document.createElement('section');section.className='module-explanation';
+ if(card.querySelector('#f-preference')||card.querySelector('.weather')){notes.forEach(el=>el.remove());return;}const section=document.createElement('section');section.className='module-explanation';
  const title=document.createElement('h4');title.textContent='使用说明';section.append(title);
  notes.forEach(el=>{const text=el.innerText.trim();if(text){text.split(/(?<=[。！？])|\n+/).map(x=>x.trim()).filter(Boolean).forEach(part=>{const paragraph=document.createElement('p');paragraph.textContent=part;section.append(paragraph);});}el.remove();});
  if(section.querySelector('p'))card.append(section);
